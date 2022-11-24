@@ -16,6 +16,9 @@ export default function ProfilePage() {
   const [name, setUserName] = useState("");
   const [email, setUserEmail] = useState("");
   const [password, setUserPassword] = useState("");
+  const [errorName, setErrorName] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
 
   useEffect(() => {
     setId(user.id);
@@ -25,17 +28,34 @@ export default function ProfilePage() {
   }, []);
 
   const updateUser = async () => {
-    let res = await dispatch(
-      userUpdate(id, {
-        id: id,
-        name: name,
-        email: email,
-        password: password,
-      })
-    );
-    console.log(res);
-    localStorage.setItem("values", JSON.stringify(res));
-    navigate("/profile");
+    if (
+      name.toString().trim() !== "" &&
+      email.toString().trim() !== "" &&
+      password.toString().trim() !== ""
+    ) {
+      let res = await dispatch(
+        userUpdate(id, {
+          id: id,
+          name: name,
+          email: email,
+          password: password,
+        })
+      );
+      console.log(res);
+      localStorage.setItem("values", JSON.stringify(res));
+      navigate("/profile");
+      setErrorName(false);
+      setErrorEmail(false);
+      setErrorPassword(false);
+    }else if(email.toString().trim() === ""){
+        setErrorEmail(true);
+    } 
+    else if(password.toString().trim() === ""){
+        setErrorPassword(true);
+    } 
+    else if(name.toString().trim() === ""){
+        setErrorName(true);
+    } 
   };
 
   return (
@@ -50,7 +70,11 @@ export default function ProfilePage() {
             onChange={(e) => setUserName(e.target.value)}
             placeholder="Enter email"
           />
-          <Form.Text className="text-muted"></Form.Text>
+          {errorName ? (
+            <Form.Text className="text-muted">Please enter your name.</Form.Text>
+          ) : (
+            ""
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -60,7 +84,13 @@ export default function ProfilePage() {
             onChange={(e) => setUserEmail(e.target.value)}
             placeholder="Enter email"
           />
-          <Form.Text className="text-muted"></Form.Text>
+          {errorEmail ? (
+            <Form.Text className="text-muted">
+              Please enter your email.
+            </Form.Text>
+          ) : (
+            ""
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -71,6 +101,13 @@ export default function ProfilePage() {
             onChange={(e) => setUserPassword(e.target.value)}
             placeholder="Password"
           />
+          {errorPassword ? (
+            <Form.Text className="text-muted">
+              Please enter your password.
+            </Form.Text>
+          ) : (
+            ""
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
         <Button variant="primary" type="button" onClick={updateUser}>
