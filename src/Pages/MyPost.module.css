@@ -1,0 +1,77 @@
+.card {
+    width: 90%;
+    max-width: 60rem;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  .img{
+    width:20px;
+    height:20px;
+    border-radius: 10px;
+  }
+
+  .featuredImg{
+    width:100px;
+    height:100px;
+    float: right;
+  }
+
+  .header{
+    display: inline-flex;
+  }
+
+  .body{
+    color:rgba(117, 117, 117, 1)
+  }
+  
+  .actions {
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .control {
+      align-items: center;
+      flex-direction: row;
+    }
+  
+  }
+
+  .btnPrimary{
+    --bs-btn-color: none !important;
+  --bs-btn-bg: none;
+  --bs-btn-border-color: none;
+  --bs-btn-hover-color: none;
+  --bs-btn-hover-bg: none;
+  --bs-btn-hover-border-color: none;
+  --bs-btn-focus-shadow-rgb: none;
+  --bs-btn-active-color: none;
+  --bs-btn-active-bg: none;
+  --bs-btn-active-border-color: none;
+  --bs-btn-active-shadow: none
+  --bs-btn-disabled-color: none;
+  --bs-btn-disabled-bg: none;
+  --bs-btn-disabled-border-color: none;
+}
+
+
+  .dropdownToggle::after {
+    display: none;
+    
+}
+
+.dropDownMenu
+{
+    --bs-dropdown-min-width:5rem
+
+}
+
+.delete{
+    background-color:red;
+    border: red;
+}
+.delete:hover,
+.delete:active{
+    background-color:red;
+    border: red;
+}

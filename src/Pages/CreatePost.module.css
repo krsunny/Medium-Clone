@@ -1,0 +1,11 @@
+.card {
+    width: 90%;
+    max-width: 60rem;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  .label{
+    font-size:large;
+    font-weight: 700;
+  }
