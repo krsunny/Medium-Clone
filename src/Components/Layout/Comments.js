@@ -9,13 +9,26 @@ import { getCommentsById, postComment } from "../../redux/actions/blog.action";
 
 export default function Comments({ initialComment }) {
   let { id } = useParams();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
   let dispatch = useDispatch();
   let user = JSON.parse(localStorage.getItem("values"));
   const options = { month: "short", day: "numeric" };
 
+  function getTime(d) {
+    var hr = d.getHours();
+    var min = d.getMinutes();
+    if (min < 10) {
+      min = "0" + min;
+    }
+    var ampm = "am";
+    if (hr > 12) {
+      hr -= 12;
+      ampm = "pm";
+    }
+    return hr + ":" + min + ampm;
+  }
 
   const commentData = async () => {
     if (value !== "") {
@@ -30,8 +43,8 @@ export default function Comments({ initialComment }) {
         })
       );
       console.log(reponse);
-      navigate(`/posts/${id}`)
-      setValue("")
+      navigate(`/posts/${id}`);
+      setValue("");
       dispatch(getCommentsById(id));
     } else {
       setError(true);
@@ -91,7 +104,7 @@ export default function Comments({ initialComment }) {
           <Card className={classes.card} key={comment.id}>
             <div className={classes.header}>
               <img
-                src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+                src="https://www.shutterstock.com/image-vector/man-icon-flat-vector-260nw-1371568223.jpg"
                 alt="pic"
                 className={`${classes.img}`}
               />
@@ -102,7 +115,8 @@ export default function Comments({ initialComment }) {
                   {new Date(comment.date).toLocaleDateString(
                     undefined,
                     options
-                  )}
+                  )}&nbsp;
+                  {getTime(new Date(comment.date))}
                 </span>
               </div>
             </div>

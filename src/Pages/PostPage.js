@@ -106,7 +106,7 @@ export default function PostPage() {
         <div >
           <h4 dangerouslySetInnerHTML={{ __html: postsbyid.content }}></h4>
         </div>
-        {user ? (
+        {user && user.id!==postsbyid.userId? (
           <>
             <div className={classes.header}>
               <button className={classes.glowOnHover}>
