@@ -50,7 +50,7 @@ export default function ProfilePage() {
     }else if(email.toString().trim() === ""){
         setErrorEmail(true);
     } 
-    else if(password.toString().trim() === ""){
+    else if(password.trim() === ""){
         setErrorPassword(true);
     } 
     else if(name.toString().trim() === ""){
@@ -71,7 +71,7 @@ export default function ProfilePage() {
             placeholder="Enter email"
           />
           {errorName ? (
-            <Form.Text className="text-muted">Please enter your name.</Form.Text>
+            <p style={{color:'red'}}>Please enter your name.</p>
           ) : (
             ""
           )}
@@ -85,9 +85,9 @@ export default function ProfilePage() {
             placeholder="Enter email"
           />
           {errorEmail ? (
-            <Form.Text className="text-muted">
+            <p style={{color:'red'}}>
               Please enter your email.
-            </Form.Text>
+            </p>
           ) : (
             ""
           )}
@@ -102,9 +102,9 @@ export default function ProfilePage() {
             placeholder="Password"
           />
           {errorPassword ? (
-            <Form.Text className="text-muted">
+            <p style={{color:'red'}}>
               Please enter your password.
-            </Form.Text>
+            </p>
           ) : (
             ""
           )}
