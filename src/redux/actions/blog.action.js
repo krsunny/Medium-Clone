@@ -20,26 +20,40 @@ import {
   USER_SUCCESS,
 } from "../reducers/action.types";
 
-const blog = () => `http://localhost:3000/posts?_sort=date&_order=desc`;
-const blogById = (id) => `http://localhost:3000/posts/${id}`;
+const deployedURL = "https://medium-blog-sunny.herokuapp.com";
+
+const URL = "http://localhost:3000";
+const BASE_URL = getURL();
+
+
+function getURL() {
+  if (window.location.href.includes("medium-blog-sunny")) {
+    return deployedURL;
+  } else {
+    return URL;
+  }
+}
+
+const blog = () => `${BASE_URL}/posts?_sort=date&_order=desc`;
+const blogById = (id) => `${BASE_URL}/posts/${id}`;
 
 const blogByCategory = (categoryId) =>
-  `http://localhost:3000/posts?category_like=${categoryId}&_sort=date&_order=desc`;
+  `${BASE_URL}/posts?category_like=${categoryId}&_sort=date&_order=desc`;
 
-const Categories = () => `http://localhost:3000/category`;
+const Categories = () => `${BASE_URL}/category`;
 
-const comment = () => `http://localhost:3000/comments`;
+const comment = () => `${BASE_URL}/comments`;
 
 const getComments = (id) =>
-  `http://localhost:3000/comments?postId=${id}&_sort=date&_order=desc`;
+  `${BASE_URL}/comments?postId=${id}&_sort=date&_order=desc`;
 
-const getUser = () => `http://localhost:3000/user`;
-const user = () => `http://localhost:3000/user`;
-const postdata = () => `http://localhost:3000/posts`;
-const updateUser = (id) => `http://localhost:3000/user/${id}`;
+const getUser = () => `${BASE_URL}/user`;
+const user = () => `${BASE_URL}/user`;
+const postdata = () => `${BASE_URL}/posts`;
+const updateUser = (id) => `${BASE_URL}/user/${id}`;
 
 export const getPosts = () => async (dispatch) => {
-    dispatch({type:GETTING_DATA})
+  dispatch({ type: GETTING_DATA });
   try {
     let response = await fetch(blog());
     let data = await response.json();
@@ -57,7 +71,7 @@ export const getPosts = () => async (dispatch) => {
 };
 
 export const getBlogByCategory = (categoryId) => async (dispatch) => {
-    dispatch({type:GETTING_DATA})
+  dispatch({ type: GETTING_DATA });
   try {
     let response = await fetch(blogByCategory(categoryId));
     let data = await response.json();
@@ -109,7 +123,7 @@ export const getCommentsById = (id) => async (dispatch) => {
 };
 
 export const getPostsById = (id) => async (dispatch) => {
-    dispatch({type:GETTING_DATA})
+  dispatch({ type: GETTING_DATA });
   try {
     let response = await fetch(blogById(id));
     let data = await response.json();
