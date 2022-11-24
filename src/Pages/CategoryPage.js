@@ -119,7 +119,7 @@ export default function CategoryPage() {
                         }}
                     ></p>
                     <span>
-                        {new Date(post.date).toLocaleDateString(undefined, options)}{" "}
+                        {new Date(post.date).toLocaleDateString(undefined, options)}.{" "}
                         {countWords(post.content) > "500"
                             ? Math.floor(countWords(post.content) / wpm) + " " + "min read"
                             : "2 min read"}

@@ -167,7 +167,7 @@ export default function MyPost() {
           </Card>
         );
       })}
-     {initialPosts.length>0?<div className={classes.actions}>
+     {!loading&&initialPosts.length>0?<div className={classes.actions}>
         {isCompleted ? (
           <Button onClick={loadMore} type="button" className={classes.actions}>
             That's It
