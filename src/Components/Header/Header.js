@@ -5,7 +5,7 @@ import classes from "./Header.module.css";
 import React, { useEffect, useState } from "react";
 import Modal from "../UI/Modal";
 import useModal from "../../utils/useModal";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import { getUsers, postUser } from "../../redux/actions/blog.action";
 
 function Header() {
   const navigate = useNavigate();
+  let id = window.location.pathname;
   const [isLoggedin, setIsLoggedIn] = useState(false);
   const data = JSON.parse(localStorage.getItem("values"));
 
@@ -28,16 +29,16 @@ function Header() {
   let { user } = useSelector((state) => state.user);
   let dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getUsers());
     if (data) {
       setIsLoggedIn(true);
-    }
-    else{
-      toggle()
+    } else {
+      toggle();
     }
     setTimeout(() => {
-      console.log(user);
+      // console.log(user);
     }, 2000);
   }, []);
 
@@ -47,20 +48,21 @@ function Header() {
       email: "",
       password: "",
     },
-    onSubmit: (data, { resetForm }) => {
+    onSubmit: (values, { resetForm }) => {
+      console.log(values.email)
       let userNotFound = true;
       user.forEach((element) => {
-        if (element.email === data.email) {
+        if (element.email === values.email) {
           userNotFound = false;
         } else {
         }
       });
       if (userNotFound) {
-        dispatch(postUser(data));
+        dispatch(postUser(values));
         setShow(false);
-        resetForm(data);
+        resetForm(values);
       } else {
-        console.log(data);
+        // console.log(data);
         setSignUpError(true);
         setShow(true);
       }
@@ -104,7 +106,7 @@ function Header() {
           element.email === values.email &&
           element.password === values.password
         ) {
-          console.log(values.email);
+          // console.log(values.email);
           resetForm(values);
           toggle();
           setIsLoggedIn(true);
@@ -160,23 +162,46 @@ function Header() {
             >
               <Nav className="me-auto">
                 <Nav>
-                  <Link to={`/category/1`}>Programming</Link>
+                  <Link
+                    className={
+                      id.includes("1") ? classes.navcolor_active : classes.navColor
+                    }
+                    to={`/category/1`}
+                  >
+                    Programming
+                  </Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/category/2`}>Data Science</Link>
+                  <Link className={
+                      id.includes("2") ? classes.navcolor_active : classes.navColor
+                    } to={`/category/2`}>
+                    Data Science
+                  </Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/category/3`}>Self Improvement</Link>
+                  <Link className={
+                      id.includes("3") ? classes.navcolor_active : classes.navColor
+                    }  to={`/category/3`}>
+                    Self Improvement
+                  </Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/category/4`}>Technology</Link>
+                  <Link className={
+                      id.includes("4") ? classes.navcolor_active : classes.navColor
+                    } to={`/category/4`}>
+                    Technology
+                  </Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/category/5`}>Others</Link>
+                  <Link className={
+                      id.includes("5") ? classes.navcolor_active : classes.navColor
+                    } to={`/category/5`}>
+                    Others
+                  </Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav.Link
@@ -208,15 +233,21 @@ function Header() {
             >
               <Nav className="me-auto">
                 <Nav>
-                  <Link to={`/createpost/new`}>Create Post</Link>
+                  <Link className={
+                      id.includes("new") ? classes.navcolor_active : classes.navColor
+                    } to={`/createpost/new`}>Create Post</Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/profile`}>My Profile</Link>
+                  <Link className={
+                      id.includes("profile") ? classes.navcolor_active : classes.navColor
+                    } to={`/profile`}>My Profile</Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
-                  <Link to={`/mypost`}>My Post</Link>
+                  <Link className={
+                      id.includes("mypost") ? classes.navcolor_active : classes.navColor
+                    } to={`/mypost`}>My Post</Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>

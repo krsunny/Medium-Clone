@@ -36,7 +36,7 @@ export default function PostPage() {
     dispatch(getPostsById(id));
     setLoadComment(commentbyid);
     setTimeout(() => {
-      console.log(postsbyid);
+    //   console.log(postsbyid);
     }, 2000);
   }, []);
 
@@ -45,7 +45,7 @@ export default function PostPage() {
   }, [postsbyid]);
 
   const incrementClap = () => {
-    console.log("Hi");
+    // console.log("Hi");
     setClap((_) => _ + 1);
     setMyClap((_) => _ + 1);
     dispatch(
@@ -74,7 +74,7 @@ export default function PostPage() {
 
   const loadMore = () => {
     setIndex(index + 10);
-    console.log(index);
+    // console.log(index);
     if (index >= loadComment.length) {
       setIsCompleted(true);
     } else {

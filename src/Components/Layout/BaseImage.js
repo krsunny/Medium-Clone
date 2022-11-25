@@ -29,17 +29,17 @@ class BaseImage extends React.Component {
       // on reader load somthing...
       reader.onload = () => {
         // Make a fileInfo Object
-        console.log("Called", reader);
+        // console.log("Called", reader);
         baseURL = reader.result;
-        console.log(baseURL);
+        // console.log(baseURL);
         resolve(baseURL);
       };
-      console.log(fileInfo);
+    //   console.log(fileInfo);
     });
   };
 
   handleFileInputChange = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     let { file } = this.state;
 
     file = e.target.files[0];
@@ -48,14 +48,14 @@ class BaseImage extends React.Component {
       .then((result) => {
         file["base64"] = result;
         this.props.setFeaturedImage(result);
-        console.log("File Is", file);
+        // console.log("File Is", file);
         this.setState({
           base64URL: result,
           file,
         });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     this.setState({

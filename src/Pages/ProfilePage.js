@@ -41,7 +41,7 @@ export default function ProfilePage() {
           password: password,
         })
       );
-      console.log(res);
+    //   console.log(res);
       localStorage.setItem("values", JSON.stringify(res));
       navigate("/profile");
       setErrorName(false);

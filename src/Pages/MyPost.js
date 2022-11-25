@@ -47,7 +47,7 @@ export default function MyPost() {
     setPostLoad(post);
 
     setTimeout(() => {
-      console.log(post);
+    //   console.log(post);
     }, 5000);
   }, []);
   let post = posts.filter((e) => e.userId === data.id);
@@ -59,7 +59,7 @@ export default function MyPost() {
 
   const loadMore = () => {
     setIndex(index + 10);
-    console.log(index);
+    // console.log(index);
     if (index >= postLoad.length) {
       setIsCompleted(true);
     } else {
@@ -82,8 +82,8 @@ export default function MyPost() {
       dispatch(getPosts());
       handleClose();
     }
-    console.log(id);
-    console.log(res);
+    // console.log(id);
+    // console.log(res);
   };
 
   const options ={month:'short',day:'numeric'}

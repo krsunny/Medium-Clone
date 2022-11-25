@@ -30,13 +30,13 @@ export default function BlogPage() {
 
     setPostLoad(posts);
     setTimeout(() => {
-      console.log(posts);
+    //   console.log(posts);
     }, 5000);
   }, []);
 
   const loadMore = () => {
     setIndex(index + 10);
-    console.log(index);
+    // console.log(index);
     if (index >= postLoad.length) {
       setIsCompleted(true);
     } else {

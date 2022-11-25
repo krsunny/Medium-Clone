@@ -93,3 +93,11 @@
     text-decoration: none;
     align-self: center;
   }
+
+  .navColor{
+    color:grey
+  }
+
+  .navcolor_active{
+    color:white
+  }

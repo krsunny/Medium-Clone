@@ -35,7 +35,7 @@ export default function CategoryPage() {
     setPostLoad(postsbycategory);
 
     setTimeout(() => {
-      console.log(postsbycategory);
+    //   console.log(postsbycategory);
     }, 5000);
   }, [id]);
   function countWords(str) {
@@ -45,7 +45,7 @@ export default function CategoryPage() {
 
   const loadMore = () => {
     setIndex(index + 10);
-    console.log(index);
+    // console.log(index);
     if (index >= postLoad.length) {
       setIsCompleted(true);
     } else {

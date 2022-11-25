@@ -42,7 +42,7 @@ export default function Comments({ initialComment }) {
           postId: id,
         })
       );
-      console.log(reponse);
+    //   console.log(reponse);
       navigate(`/posts/${id}`);
       setValue("");
       dispatch(getCommentsById(id));

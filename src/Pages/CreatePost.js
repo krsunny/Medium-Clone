@@ -35,7 +35,7 @@ export default function CreatePost() {
     }
 
     setTimeout(() => {
-      console.log(postsbyid);
+    //   console.log(postsbyid);
     }, 2000);
   }, []);
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function CreatePost() {
         date: new Date(),
       })
     );
-    console.log(reponse);
+    // console.log(reponse);
     navigate("/mypost");
     setError(false);
   };
@@ -87,7 +87,7 @@ export default function CreatePost() {
           date: new Date(),
         })
       );
-      console.log(reponse);
+    //   console.log(reponse);
       navigate("/mypost");
       setError(false);
     } else {
