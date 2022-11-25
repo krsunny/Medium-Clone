@@ -69,7 +69,7 @@ export default function CategoryPage() {
           <Link to="/category/2">Data Science</Link>
         </Badge>{" "}
         <Badge bg="secondary">
-          <Link to="/category/3">Self Improvemnt</Link>
+          <Link to="/category/3">Self Improvement</Link>
         </Badge>{" "}
         <Badge bg="secondary">
           <Link to="/category/4">Technology</Link>
