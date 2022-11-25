@@ -48,7 +48,7 @@ function Header() {
       email: "",
       password: "",
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log(values.email)
       let userNotFound = true;
       user.forEach((element) => {
@@ -58,7 +58,8 @@ function Header() {
         }
       });
       if (userNotFound) {
-        dispatch(postUser(values));
+        let latestData = await dispatch(postUser(values));
+        dispatch(getUsers());
         setShow(false);
         resetForm(values);
       } else {
@@ -102,6 +103,7 @@ function Header() {
     },
     onSubmit: (values, { resetForm }) => {
       user.forEach((element) => {
+        console.log(values.email,values.password,element)
         if (
           element.email === values.email &&
           element.password === values.password
@@ -112,6 +114,8 @@ function Header() {
           setIsLoggedIn(true);
           localStorage.setItem("values", JSON.stringify(element));
           navigate("/blog");
+          setLoginError(false);
+
           // setLoginEmailError(false);
           // setLoginPasswordError(false);
         } else {
@@ -124,10 +128,10 @@ function Header() {
       email: yup
         .string()
         .email("Email is not in proper format")
-        .required("Email is required"),
+        .required("Enter your email"),
       password: yup
         .string()
-        .required("Enter a secure password")
+        .required("Enter your password")
         .matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
           "Must conatin 8 characters, one uppercase, one lowercase, one number and one special character"

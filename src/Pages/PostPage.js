@@ -153,7 +153,7 @@ export default function PostPage() {
           </>
         ) : null}
       </Card>}
-      {user?<Comments initialComment={initialComment} />:''}
+      <Comments initialComment={initialComment} />
       {!user?<></>:initialComment.length > 0 ? (
         <div className={classes.actions}>
           {isCompleted ? (

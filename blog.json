@@ -47,6 +47,12 @@
       "email": "ash1234@gmail.com",
       "password": "123456Ms*",
       "id": 8
+    },
+    {
+      "name": "Sunny Kumar",
+      "email": "123@gmail.com",
+      "password": "123456Ms*",
+      "id": 9
     }
   ],
   "category": [
@@ -166,7 +172,7 @@
       "username": "Sunny",
       "clap": 24,
       "category": 5,
-      "date": "2022-11-24T11:37:00.941Z",
+      "date": "2022-11-25T13:12:08.586Z",
       "id": 11
     },
     {

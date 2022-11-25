@@ -54,11 +54,11 @@ export default function MyPost() {
 
   const [postLoad, setPostLoad] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [index, setIndex] = useState(10);
+  const [index, setIndex] = useState(5);
   const initialPosts = slice(post, 0, index);
 
   const loadMore = () => {
-    setIndex(index + 10);
+    setIndex(_ =>_+ 10);
     // console.log(index);
     if (index >= postLoad.length) {
       setIsCompleted(true);
@@ -167,7 +167,7 @@ export default function MyPost() {
           </Card>
         );
       })}
-     {!loading&&initialPosts.length>0?<div className={classes.actions}>
+     {!loading&&initialPosts.length>4?<div className={classes.actions}>
         {isCompleted ? (
           <Button onClick={loadMore} type="button" className={classes.actions}>
             That's It

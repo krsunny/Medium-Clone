@@ -14,7 +14,7 @@ export default function BlogPage() {
   let { posts, loading } = useSelector((state) => state.posts);
   const [postLoad, setPostLoad] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [index, setIndex] = useState(10);
+  const [index, setIndex] = useState(5);
   const initialPosts = slice(posts, 0, index);
 
   const category = {
@@ -35,7 +35,7 @@ export default function BlogPage() {
   }, []);
 
   const loadMore = () => {
-    setIndex(index + 10);
+    setIndex(_=>_+ 5);
     // console.log(index);
     if (index >= postLoad.length) {
       setIsCompleted(true);
@@ -138,7 +138,7 @@ export default function BlogPage() {
           );
         })
       )}
-      {initialPosts.length > 0 ? (
+      {!loading && initialPosts.length > 4 ? (
         <div className={classes.actions}>
           {isCompleted ? (
             <Button

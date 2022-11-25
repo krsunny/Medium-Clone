@@ -33,7 +33,6 @@ export default function Section() {
                 </p>
                 <a
                   className="btn btn-outline-light btn-lg"
-                  href="#"
                   role="button"
                   onClick={() => window.scrollTo(0, 400)}
                 >

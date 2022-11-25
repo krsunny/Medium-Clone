@@ -22,6 +22,17 @@ export default function CategoryPage() {
   const [index, setIndex] = useState(5);
   const initialPosts = slice(postsbycategory, 0, index);
 
+
+  const loadMore = () => {
+    setIndex(_=> _+ 5);
+    // console.log(index);
+    if (index >= postLoad.length) {
+      setIsCompleted(true);
+    } else {
+      setIsCompleted(false);
+    }
+  };
+
   const category = {
     1: "Programming",
     2: "Data Science",
@@ -33,6 +44,9 @@ export default function CategoryPage() {
   useEffect(() => {
     dispatch(getBlogByCategory(id));
     setPostLoad(postsbycategory);
+    setIndex(5);
+    setIsCompleted(false);
+
 
     setTimeout(() => {
     //   console.log(postsbycategory);
@@ -43,15 +57,6 @@ export default function CategoryPage() {
   }
   const wpm = 225;
 
-  const loadMore = () => {
-    setIndex(index + 10);
-    // console.log(index);
-    if (index >= postLoad.length) {
-      setIsCompleted(true);
-    } else {
-      setIsCompleted(false);
-    }
-  };
 
   const options = { month: "short", day: "numeric" };
   return (
@@ -132,7 +137,7 @@ export default function CategoryPage() {
         );
       })}
 
-      {!loading && initialPosts.length>0?<div className={classes.actions}>
+      {!loading && initialPosts.length>4?<div className={classes.actions}>
         {isCompleted ? (
           <Button onClick={loadMore} type="button" className={classes.actions}>
             That's It
