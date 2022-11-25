@@ -12,6 +12,7 @@ import {
 import classes from "./CreatePost.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../Components/UI/Spinner";
 
 export default function CreatePost() {
   let { type } = useParams();
@@ -20,6 +21,7 @@ export default function CreatePost() {
   const [title, setTitle] = useState("");
   const [featuredImage, setFeaturedImage] = useState("");
   const [selectValue, setSelectValue] = useState("");
+  const [loader,setLoader]=useState(false);
 
   const [error, setError] = useState(false);
 
@@ -75,6 +77,8 @@ export default function CreatePost() {
 
   const saveData = async () => {
     if (title !== "" && selectValue !== "" && value !== "") {
+        window.scroll(0,0)
+        setLoader(true)
       let reponse = await dispatch(
         postData({
           title: title,
@@ -89,6 +93,7 @@ export default function CreatePost() {
       );
     //   console.log(reponse);
       navigate("/mypost");
+      setLoader(false)
       setError(false);
     } else {
       setError(true);
@@ -228,6 +233,7 @@ export default function CreatePost() {
 
         {/* <Post/> */}
       </Card>
+      {loader && <Loader/>}
     </>
   );
 }

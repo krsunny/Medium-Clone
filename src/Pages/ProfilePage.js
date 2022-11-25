@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { userUpdate } from "../redux/actions/blog.action";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Components/UI/Spinner";
 
 export default function ProfilePage() {
   let navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function ProfilePage() {
   const [errorName, setErrorName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+  const [loader,setLoader] = useState(false);
 
   useEffect(() => {
     setId(user.id);
@@ -33,6 +35,7 @@ export default function ProfilePage() {
       email.toString().trim() !== "" &&
       password.toString().trim() !== ""
     ) {
+        setLoader(true)
       let res = await dispatch(
         userUpdate(id, {
           id: id,
@@ -47,6 +50,7 @@ export default function ProfilePage() {
       setErrorName(false);
       setErrorEmail(false);
       setErrorPassword(false);
+      setLoader(false)
     }else if(email.toString().trim() === ""){
         setErrorEmail(true);
     } 
@@ -59,6 +63,7 @@ export default function ProfilePage() {
   };
 
   return (
+    <>
     <Card className={classes.card}>
       <h1>My Profile</h1>
       <Form>
@@ -115,5 +120,7 @@ export default function ProfilePage() {
         </Button>
       </Form>
     </Card>
+    {loader&&<Loader/>}
+    </>
   );
 }

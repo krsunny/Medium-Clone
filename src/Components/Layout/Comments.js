@@ -111,7 +111,7 @@ export default function Comments({ initialComment }) {
               &nbsp;
               <div>
                 <h6>{comment.username}</h6>
-                <span className={classes.body}>
+                <span className={classes.body} style={{fontSize:'15px'}}>
                   {new Date(comment.date).toLocaleDateString(
                     undefined,
                     options
@@ -122,7 +122,7 @@ export default function Comments({ initialComment }) {
             </div>
             <br />
             <div className={classes.header}>
-              <h4>{comment.body}</h4>
+              <h6 style={{fontStyle:'italic',marginLeft:'20px',marginTop:'15px',fontSize:"20px"}}>{`"${comment.body}"`}</h6>
             </div>
             <br />
             {/* <div className={classes.header}>
