@@ -168,7 +168,7 @@ function Header() {
                 <Nav>
                   <Link
                     className={
-                      id.includes("1") ? classes.navcolor_active : classes.navColor
+                      id === "/category/1" ? classes.navcolor_active : classes.navColor
                     }
                     to={`/category/1`}
                   >
@@ -178,7 +178,7 @@ function Header() {
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("2") ? classes.navcolor_active : classes.navColor
+                      id === "/category/2" ? classes.navcolor_active : classes.navColor
                     } to={`/category/2`}>
                     Data Science
                   </Link>
@@ -186,7 +186,7 @@ function Header() {
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("3") ? classes.navcolor_active : classes.navColor
+                      id ==="/category/3" ? classes.navcolor_active : classes.navColor
                     }  to={`/category/3`}>
                     Self Improvement
                   </Link>
@@ -194,7 +194,7 @@ function Header() {
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("4") ? classes.navcolor_active : classes.navColor
+                      id === "/category/4" ? classes.navcolor_active : classes.navColor
                     } to={`/category/4`}>
                     Technology
                   </Link>
@@ -202,7 +202,7 @@ function Header() {
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("5") ? classes.navcolor_active : classes.navColor
+                      id==="/category/5" ? classes.navcolor_active : classes.navColor
                     } to={`/category/5`}>
                     Others
                   </Link>
@@ -238,19 +238,19 @@ function Header() {
               <Nav className="me-auto">
                 <Nav>
                   <Link className={
-                      id.includes("new") ? classes.navcolor_active : classes.navColor
+                      id === "/createpost/new" ? classes.navcolor_active : classes.navColor
                     } to={`/createpost/new`}>Create Post</Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("profile") ? classes.navcolor_active : classes.navColor
+                      id ==="/profile" ? classes.navcolor_active : classes.navColor
                     } to={`/profile`}>My Profile</Link>
                 </Nav>
                 &nbsp;&nbsp;
                 <Nav>
                   <Link className={
-                      id.includes("mypost") ? classes.navcolor_active : classes.navColor
+                      id==="/mypost" ? classes.navcolor_active : classes.navColor
                     } to={`/mypost`}>My Post</Link>
                 </Nav>
                 &nbsp;&nbsp;
@@ -388,7 +388,7 @@ function Header() {
                         </div>
                         <div className="mb-4">
                           <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
                           >
                             Sign Up
@@ -483,7 +483,7 @@ function Header() {
                         </div>
                         <div className="mb-4">
                           <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit"
                           >
                             Sign In
